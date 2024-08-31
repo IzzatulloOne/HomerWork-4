@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="loader"></div>
+    <div class="content">
+        <nav>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'add_book' %}">Добавить книгу</a>
+            <a href="{% url 'page_one' %}">Страница 1</a>
+            <a href="{% url 'page_two' %}">Страница 2</a>
+            <a href="{% url 'page_three' %}">Страница 3</a>
+        </nav>
+        <h1>Список книг</h1>
+        <div class="card-container">
+            {% for book in books %}
+                <div class="card">
+                    {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}"/>
+                    {% else %}
+                        <img src="{% static 'default_cover.jpg' %}" class="card-img-top" alt="Default Cover"/>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+                        <a href="{% url 'book_detail' book.id %}" class="btn btn-primary" data-mdb-ripple-init>Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'scripts.js' %}"></script>
+</body>
+</html>

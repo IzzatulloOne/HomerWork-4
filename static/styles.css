@@ -1,0 +1,265 @@
+/* BookApp/static/BookApp/styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 2s ease-out forwards;
+}
+
+.loader::after {
+    content: "Loading...";
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    animation: pulse 1.5s infinite;
+}
+
+.content {
+    display: none;
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: #fff;
+    transition: width 0.3s, left 0.3s;
+}
+
+nav a:hover {
+    color: #ff7e5f;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    animation: zoomIn 1s ease-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    animation: slideUp 1.5s ease-out;
+}
+
+ul li {
+    background: rgba(255, 255, 255, 0.2);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+button {
+    background: #ff7e5f;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #feb47b;
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* BookApp/static/BookApp/styles.css */
+
+/* Общие стили для контейнера карточек */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 300px;
+    margin: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1em;
+    color: #555;
+}
+
+.card .btn {
+    background: #ff7e5f;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.card .btn:hover {
+    background: #feb47b;
+    transform: translateY(-3px);
+}
+
+/* Добавление анимации для карточек */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.book-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-cover {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.book-info {
+    text-align: center;
+}
+
+.book-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.book-description {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.book-info .btn {
+    background: #ff7e5f;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.book-info .btn:hover {
+    background: #feb47b;
+    transform: translateY(-3px);
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="loader"></div>
+    <div class="content">
+        <nav>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'add_book' %}">Добавить книгу</a>
+            <a href="{% url 'page_one' %}">Страница 1</a>
+            <a href="{% url 'page_two' %}">Страница 2</a>
+            <a href="{% url 'page_three' %}">Страница 3</a>
+        </nav>
+        <div class="book-detail">
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
+            <div class="book-info">
+                <h1 class="book-title">{{ book.title }}</h1>
+                <h3 class="book-author">Автор: {{ book.author }}</h3>
+                <p class="book-description">{{ book.description }}</p>
+                <a href="{% url 'home' %}" class="btn btn-primary">Вернуться на главную</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'scripts.js' %}"></script>
+</body>
+</html>
